@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body style = "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+   <!-- Load d3.js -->
+   <script src="https://d3js.org/d3.v6.js"></script>
+   <!-- <script src="https://d3js.org/d3-scale-chromatic.v2.min.js"></script>
+      <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script> -->
+   <!-- Create an element where the map will take place -->
+   <svg id="my_dataviz" width="440" height="300"></svg>
+   <script>
+      // The svg
+      var svg = d3.select("svg"),
+          width = +svg.attr("width"),
+          height = +svg.attr("height");
+      
+      
+      var name= "Japan";
+      var Center = [0,0];
+      
+
+function displayCont(contName,color, transLate) 
+{
+
+   d3.json("https://gist.githubusercontent.com/DiegoWantedATinder/ff16dc57eb4f0f1548d216162d01cd69/raw/70099ed32a6f40d96e9bcdc9689dbb3a9bf91518/countries.json")
+      .then((data) => 
+      {
+        console.log(data)
+      
+                    // Filter data
+                    data.filter(
+                        function(d){
+
+
+                            if(d.name == contName ) 
+                            {
+            
+
+                                console.log(d.name);
+                                console.log(d.latlng.reverse());
+                                console.log("Local Center is")
+                                Center = d.latlng;
+                                console.log(Center);
+
+                                var projection = d3.geoMercator()
+                                                .center(Center).scale(50).translate(transLate)
+                                d3.json("https://raw.githubusercontent.com/DiegoWantedATinder/CountriesGeoJSON/main/countries.json")
+                                  .then((data) => {
+
+
+                                      data.features = data.features.filter(function(d){console.log(d.properties.ADMIN) ; return d.properties.ADMIN==contName})
+                                  
+                                      // Draw the map
+                                      svg.append("g")
+                                          .selectAll("path")
+                                          .data(data.features)
+                                          .enter()
+                                          .append("path")
+                                            .attr("fill", color)
+                                            .attr("d", d3.geoPath()
+                                                .projection(projection))
+                                          .style("stroke", "none")
+                                    })
+                                                      
+                            }
+                                      })
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      })
+
+}
+
+var xshift = 90;
+var yshift = 90;
+displayCont("United States of America", "peru", [148.4 + xshift,129.9 + yshift])
+displayCont("Canada", "blue", [150 + xshift,100 + yshift])
+displayCont("Mexico", "crimson", [144.03 + xshift,145.200 + yshift])
+   
+      
+      
+      console.log("Center is")
+      console.log(Center)
+      
+      
+      
+      
+   </script>
+</body>
