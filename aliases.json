@@ -7,6 +7,10 @@
 	"Thailand" : "Land of Smiles",
 	"Sri Lanka" : "India’s Teardrop",
 	"South Korea" : "Land of the Morning Calm",
+	"Mexico" : "Gerardo",
+	"Hungary" : "Marcell",
+	"Puerto Rico" : "David",
+	"Germany" : "Mason",
 	"North Korea" : "The Hermit Kingdom",
 	"Mongolia" : "Land of Blue Sky",
 	"Japan" : "Land of the Rising Sun",
@@ -48,6 +52,7 @@
 	"Madagascar" : "The Red Island",
 	"Lesotho" : "The Kingdom In the Sky",
 	"Egypt" : "The Gift of the Nile",
-	"Burkina Faso" : "Land of the Upright Men"
+	"Burkina Faso" : "Land of the Upright Men",
+
 
 }
