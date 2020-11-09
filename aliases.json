@@ -1,16 +1,9 @@
 {
-
-
-	"USA" : 
 	
-		[
-		"USA",
-		"America",
-		"'Murica"
-		]
-
-
-
-
+	"'Murica" : "United States of America", 
+	
+	"America" : "United States of America",
+	"US" : "United States of America"
+	
 
 }
